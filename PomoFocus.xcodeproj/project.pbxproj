@@ -11,6 +11,7 @@
 		4DE756AA2B1F38E300F6E641 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756A92B1F38E300F6E641 /* ContentView.swift */; };
 		4DE756AC2B1F38E400F6E641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE756AB2B1F38E400F6E641 /* Assets.xcassets */; };
 		4DE756AF2B1F38E400F6E641 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */; };
+		7AB9E4462B1F3FBC001A0986 /* PomodoroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E4452B1F3FBC001A0986 /* PomodoroModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4DE756A92B1F38E300F6E641 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4DE756AB2B1F38E400F6E641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7AB9E4452B1F3FBC001A0986 /* PomodoroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 		4DE7569B2B1F38E300F6E641 = {
 			isa = PBXGroup;
 			children = (
+				7AB9E4472B1F3FE7001A0986 /* ViewModel */,
 				4DE756A62B1F38E300F6E641 /* PomoFocus */,
 				4DE756A52B1F38E300F6E641 /* Products */,
 			);
@@ -65,6 +68,14 @@
 				4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7AB9E4472B1F3FE7001A0986 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7AB9E4452B1F3FBC001A0986 /* PomodoroModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				4DE756AA2B1F38E300F6E641 /* ContentView.swift in Sources */,
 				4DE756A82B1F38E300F6E641 /* PomoFocusApp.swift in Sources */,
+				7AB9E4462B1F3FBC001A0986 /* PomodoroModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +284,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomoFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = 9L5T2ZCJNR;
+				DEVELOPMENT_TEAM = 7DCJG5672R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -301,7 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomoFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = 9L5T2ZCJNR;
+				DEVELOPMENT_TEAM = 7DCJG5672R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

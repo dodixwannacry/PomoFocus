@@ -40,37 +40,38 @@ struct ContentView: View {
     
     var body: some View {
             ZStack {
-                LinearGradient(colors: [.black, .purple], startPoint: .center, endPoint: .bottom)
+                LinearGradient(colors: [.white, .white], startPoint: .center, endPoint: .bottom)
                     .ignoresSafeArea()
                 VStack(spacing: 10) {
                     Spacer()
                     GeometryReader { geo in
                         VStack(spacing: 10) {
                             Text(appState.mode.rawValue)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .font(.system(size: 50))
                             Text(appState.currentTimeDisplay)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .font(.system(size: 50))
                         }
                         .frame(width: geo.size.width, height: geo.size.height)
-                        .background(.purple)
-                        .clipShape(RoundedRectangle(cornerRadius: 30))
-                        
+                        .background(.white)
+                        .border(Color.black, width: 7)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
                     }.frame(maxHeight: 150)
+                    Spacer()
                         Stepper("\(appState.workMinutes)  minute session", value: $appState.workMinutes, in: 1...99)
                             .disabled(timer != nil)
                             .padding()
-                            .background(.purple)
-                            .foregroundColor(.white)
+                            .background(.white)
+                            .foregroundColor(.black)
                             .font(.title)
                             .cornerRadius(15.0)
 
                     Stepper("\(appState.restMinutes) minute break ", value: $appState.restMinutes, in: 1...99)
                             .disabled(timer != nil)
                             .padding()
-                            .background(.purple)
-                            .foregroundColor(.white)
+                            .background(.white)
+                            .foregroundColor(.black)
                             .font(.title)
                             .cornerRadius(15.0)
                     HStack {
@@ -103,7 +104,7 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .padding()
             }
             

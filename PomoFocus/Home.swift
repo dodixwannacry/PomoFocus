@@ -62,7 +62,7 @@ struct Home: View {
                         
                         Text(pomodoroModel.timerStringValue)
                             .font(.system(size: 45, weight: .light))
-                            .rotationEffect(.init(degrees: -90))
+                            .rotationEffect(.init(degrees: 90))
                             .animation(.none, value: pomodoroModel.progress)
                     }
                     .padding(60)
@@ -73,12 +73,14 @@ struct Home: View {
                     
                     Button{
                         if pomodoroModel.isStarted{
-                            
+                            pomodoroModel.stopTimer()
+                            // MARK: Cancelling All Notifications
+                            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                         }else{
                             pomodoroModel.addNewTimer = true
                         }
                     } label: {
-                        Image (systemName: !pomodoroModel.isStarted ? "timer" : "pause")
+                        Image (systemName: !pomodoroModel.isStarted ? "timer" : "stop.fill")
                             .font(.largeTitle.bold())
                             .foregroundColor (.white)
                             .frame (width: 80,height: 80)
@@ -102,6 +104,9 @@ struct Home: View {
                 Color.black
                     .opacity(pomodoroModel.addNewTimer ? 0.25 : 0)
                     .onTapGesture {
+                        pomodoroModel.hour = 0
+                        pomodoroModel.minutes = 0
+                        pomodoroModel.seconds = 0
                         pomodoroModel.addNewTimer = false
                     }
                 
@@ -112,6 +117,20 @@ struct Home: View {
             .animation(.easeInOut, value: pomodoroModel.addNewTimer)
         })
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        .onReceive(Timer.publish(every: 1, on: .main, in: .common) .autoconnect()) { _ in
+            if pomodoroModel.isStarted{
+                pomodoroModel.updateTimer()
+            }
+        }
+        .alert("Timer is over", isPresented: $pomodoroModel.isFinished) {
+            Button("Start new", role: .cancel){
+                pomodoroModel.stopTimer()
+                pomodoroModel.addNewTimer = true
+            }
+            Button("Close",role: .destructive){
+                pomodoroModel.stopTimer()
+            }
+        }
     }
     
     // MARK: A Timer Button Sheet
@@ -173,7 +192,7 @@ struct Home: View {
             .padding(.top,20)
             
             Button{
-                
+                pomodoroModel.startTimer()
             } label: {
                 Text("Save")
                     .font(.title3)
@@ -213,7 +232,9 @@ struct Home: View {
      
 }
 
-#Preview {
-    ContentView()
-        .environmentObject(PomodoroModel())
+struct Home_Previews: PreviewProvider {
+    static var previews: some View{
+        ContentView()
+            .environmentObject(PomodoroModel())
+    }
 }

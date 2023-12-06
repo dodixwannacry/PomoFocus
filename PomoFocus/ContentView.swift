@@ -74,20 +74,32 @@ struct ContentView: View {
                             .font(.title)
                             .cornerRadius(15.0)
                     HStack {
-                        Button("Start") {
+                        Button(action: {
                             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
                                 appState.next()
                             }
-                        }.appBtn(color: .green)
-                        Button("Stop") {
+                        }) {
+                            Image(systemName: "play.circle.fill")
+                                .font(.system(size: 35))
+                        }.padding(20)
+
+                        Button(action: {
                             timer?.invalidate()
                             timer = nil
-                        }.appBtn(color: .red)
-                        Button("Reset") {
+                        }) {
+                            Image(systemName: "stop.circle.fill")
+                                .font(.system(size: 35))
+                        }.padding(20)
+
+
+                        Button(action: {
                             timer?.invalidate()
                             timer = nil
                             appState.reset()
-                        }.appBtn(color: .yellow)
+                        }) {
+                            Image(systemName: "gobackward")
+                                .font(.system(size: 35))
+                        }.padding(20)
                     }
                     Spacer()
                 }

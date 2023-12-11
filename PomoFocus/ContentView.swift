@@ -39,6 +39,7 @@ struct ContentView: View {
     
     
     var body: some View {
+       
             ZStack {
                 LinearGradient(colors: [.white, .white], startPoint: .center, endPoint: .bottom)
                     .ignoresSafeArea()
@@ -80,6 +81,7 @@ struct ContentView: View {
                                 appState.next()
                             }
                         }) {
+                            
                             Image(systemName: "play.circle.fill")
                                 .font(.system(size: 35))
                         }.padding(20)
@@ -107,13 +109,16 @@ struct ContentView: View {
                 .foregroundColor(.black)
                 .padding()
             }
-            
+        
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            
     }
 }
 

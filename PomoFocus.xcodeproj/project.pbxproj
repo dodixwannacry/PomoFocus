@@ -12,6 +12,11 @@
 		4DE756AF2B1F38E400F6E641 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */; };
 		4DE756B62B207C2C00F6E641 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756B52B207C2C00F6E641 /* AppState.swift */; };
 		4DE756B82B207D3900F6E641 /* PomoFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756B72B207D3900F6E641 /* PomoFocus.swift */; };
+		7AB9E4612B20F57F001A0986 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E4602B20F57F001A0986 /* LibraryView.swift */; };
+		7AB9E4632B20FD87001A0986 /* ExpadendBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E4622B20FD87001A0986 /* ExpadendBottomSheet.swift */; };
+		7AB9E46E2B248C82001A0986 /* MusicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB9E4692B248C5B001A0986 /* MusicKit.framework */; };
+		7AB9E47A2B24C6CE001A0986 /* homestuck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */; };
+		7AB9E47C2B24C790001A0986 /* SoundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E47B2B24C790001A0986 /* SoundMusic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +26,11 @@
 		4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4DE756B52B207C2C00F6E641 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4DE756B72B207D3900F6E641 /* PomoFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoFocus.swift; sourceTree = "<group>"; };
+		7AB9E4602B20F57F001A0986 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		7AB9E4622B20FD87001A0986 /* ExpadendBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpadendBottomSheet.swift; sourceTree = "<group>"; };
+		7AB9E4692B248C5B001A0986 /* MusicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MusicKit.framework; path = System/Library/Frameworks/MusicKit.framework; sourceTree = SDKROOT; };
+		7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = homestuck.mp3; path = ../homestuck.mp3; sourceTree = "<group>"; };
+		7AB9E47B2B24C790001A0986 /* SoundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundMusic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AB9E46E2B248C82001A0986 /* MusicKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,9 +48,13 @@
 		4DE7569B2B1F38E300F6E641 = {
 			isa = PBXGroup;
 			children = (
+				7AB9E47B2B24C790001A0986 /* SoundMusic.swift */,
+				7AB9E4622B20FD87001A0986 /* ExpadendBottomSheet.swift */,
+				7AB9E4602B20F57F001A0986 /* LibraryView.swift */,
 				7AB9E4472B1F3FE7001A0986 /* ViewModel */,
 				4DE756A62B1F38E300F6E641 /* PomoFocus */,
 				4DE756A52B1F38E300F6E641 /* Products */,
+				7AB9E4682B248C5B001A0986 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,6 +72,7 @@
 				4DE756A92B1F38E300F6E641 /* ContentView.swift */,
 				4DE756B52B207C2C00F6E641 /* AppState.swift */,
 				4DE756AB2B1F38E400F6E641 /* Assets.xcassets */,
+				7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */,
 				4DE756AD2B1F38E400F6E641 /* Preview Content */,
 			);
 			path = PomoFocus;
@@ -76,6 +92,14 @@
 				4DE756B72B207D3900F6E641 /* PomoFocus.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7AB9E4682B248C5B001A0986 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AB9E4692B248C5B001A0986 /* MusicKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +162,7 @@
 			files = (
 				4DE756AF2B1F38E400F6E641 /* Preview Assets.xcassets in Resources */,
 				4DE756AC2B1F38E400F6E641 /* Assets.xcassets in Resources */,
+				7AB9E47A2B24C6CE001A0986 /* homestuck.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,9 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AB9E4612B20F57F001A0986 /* LibraryView.swift in Sources */,
+				7AB9E4632B20FD87001A0986 /* ExpadendBottomSheet.swift in Sources */,
 				4DE756B82B207D3900F6E641 /* PomoFocus.swift in Sources */,
 				4DE756AA2B1F38E300F6E641 /* ContentView.swift in Sources */,
 				4DE756B62B207C2C00F6E641 /* AppState.swift in Sources */,
+				7AB9E47C2B24C790001A0986 /* SoundMusic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomoFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = 9L5T2ZCJNR;
+				DEVELOPMENT_TEAM = 7DCJG5672R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -297,7 +325,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = RodolfoFalanga.PomoFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = RodolfoFalanga.PomoFocus.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -313,7 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomoFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = 9L5T2ZCJNR;
+				DEVELOPMENT_TEAM = 7DCJG5672R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -326,7 +354,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = RodolfoFalanga.PomoFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = RodolfoFalanga.PomoFocus.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

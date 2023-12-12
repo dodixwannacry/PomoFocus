@@ -2,7 +2,7 @@ import Foundation
 
 enum Mode: String, Equatable {
     case rest = "Rest"
-    case session = ""
+    case session = "Focus"
 }
 
 struct AppState {

@@ -55,7 +55,7 @@ struct ContentView: View {
                                 .font(.system(size: 50))
                         }
                         .frame(width: geo.size.width, height: geo.size.height)
-                        .background(.white)
+                        .background(.redd)
                         .border(Color.black, width: 7)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                     }.frame(maxHeight: 150)

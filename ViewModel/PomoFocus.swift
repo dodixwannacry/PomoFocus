@@ -9,11 +9,9 @@ import SwiftUI
 
 @main
 struct PomoFocusdef: App {
-    @StateObject private var audioPlayerManager = AudioPlayerManager()
     @State private var expandSheet: Bool = false
     @State var index = 0
     @State private var isModal:  Bool = false
-    @StateObject var audioPlayerViewModel = AudioPlayerViewModel()
     var body: some Scene {
         WindowGroup{
             
@@ -54,8 +52,6 @@ struct PomoFocusdef: App {
                     .fill(.ultraThickMaterial)
                     .overlay{
                         MusicInfo(expandSheet: $expandSheet)
-                            .environmentObject(audioPlayerManager)
-                            .environmentObject(audioPlayerViewModel)
                     }
                     
             }
@@ -78,7 +74,6 @@ struct MusicInfo: View {
     @Binding var expandSheet: Bool
     @State private var isTesting: Bool = false
     @State private var isModal: Bool = false
-    @StateObject var audioPlayerViewModel = AudioPlayerViewModel()
     var body: some View {
         HStack(spacing: 0){
             ZStack{
@@ -108,7 +103,6 @@ struct MusicInfo: View {
                                         resumeMusic()
                                         isTesting = true
                                     }
-                                    audioPlayerViewModel.isPlaying = isTesting
                                 } label: {
                                     Image(systemName: isTesting ? "pause.fill" : "play.fill")
                                         .font(.title2)

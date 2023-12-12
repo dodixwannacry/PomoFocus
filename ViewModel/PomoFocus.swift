@@ -29,12 +29,15 @@ struct PomoFocusdef: App {
             }
             .accentColor(.redd)
             .toolbarBackground(.visible, for: .tabBar)
+            .onAppear(){
+                UITabBar.appearance().backgroundColor = .BG
+            }
             .toolbarBackground(.ultraThickMaterial, for: .tabBar)
             .toolbar(expandSheet ? .hidden : .visible, for: .tabBar)
-            
             .safeAreaInset(edge: .bottom) {
-                            CustomButtonSheet()
-                        }
+                CustomButtonSheet()
+                 }
+            
                         
         }
         

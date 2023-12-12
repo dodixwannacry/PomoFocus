@@ -86,7 +86,7 @@ struct ContentView: View {
                                 .foregroundColor(.redd)
                                 .font(.system(size: 35))
                         }.padding(20)
-
+                        /*
                         Button(action: {
                             timer?.invalidate()
                             timer = nil
@@ -94,8 +94,8 @@ struct ContentView: View {
                             Image(systemName: "stop.circle.fill")
                                 .font(.system(size: 35))
                         }.padding(20)
-
-
+                        */
+                        /*
                         Button(action: {
                             timer?.invalidate()
                             timer = nil
@@ -104,6 +104,7 @@ struct ContentView: View {
                             Image(systemName: "gobackward")
                                 .font(.system(size: 35))
                         }.padding(20)
+                         */
                     }
                     Spacer()
                 }

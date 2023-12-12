@@ -30,7 +30,7 @@ struct PomoFocusdef: App {
             .accentColor(.redd)
             .toolbarBackground(.visible, for: .tabBar)
             .onAppear(){
-                UITabBar.appearance().backgroundColor = .BG
+                UITabBar.appearance().backgroundColor = .tab
             }
             .toolbarBackground(.ultraThickMaterial, for: .tabBar)
             .toolbar(expandSheet ? .hidden : .visible, for: .tabBar)

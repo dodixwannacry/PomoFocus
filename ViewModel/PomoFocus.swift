@@ -130,6 +130,8 @@ struct MusicInfo: View {
             .frame(height: 70)
             .contentShape(Rectangle())
             }
+        .background(.redd)
+        .edgesIgnoringSafeArea(.all)
         }
     }
 

@@ -62,6 +62,7 @@ struct MaxiPlayerView: View {
             updateProgress()
         }
         
+        .preferredColorScheme(.dark)
         
     }
     

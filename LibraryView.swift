@@ -9,7 +9,13 @@ import SwiftUI
 
 struct LibraryView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+                Text("Hello")
+                    .foregroundColor(.white)
+        }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.bgTab)
+                .edgesIgnoringSafeArea(.all)
     }
 }
 

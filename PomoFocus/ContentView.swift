@@ -41,8 +41,6 @@ struct ContentView: View {
     var body: some View {
        
             ZStack {
-                LinearGradient(colors: [.white, .white], startPoint: .center, endPoint: .bottom)
-                    .ignoresSafeArea()
                 VStack(spacing: 10) {
                     Spacer()
                     GeometryReader { geo in
@@ -111,6 +109,8 @@ struct ContentView: View {
                 .foregroundColor(.black)
                 .padding()
             }
+            .background(.bgTab)
+            .edgesIgnoringSafeArea(.all)
         
     }
     

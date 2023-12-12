@@ -48,7 +48,7 @@ func resumeMusic() {
 }
 
 
-
+/*
 func sliderMusic() -> some View{
     Slider(value: Binding(get: {
         // Ottieni la posizione attuale della riproduzione
@@ -64,24 +64,19 @@ func sliderMusic() -> some View{
     }), in: 0...(player?.duration ?? 0))
     
 }
-
-
- func timeString(from time: TimeInterval) -> String {
- let minutes = Int(time) / 60
- let seconds = Int(time) % 60
- return String(format: "%02d:%02d", minutes, seconds)
- }
+ */
 
 class AudioPlayerViewModel: ObservableObject {
     @Published var currentTime: Double = 0
     @Published var duration: Double = 0
     @Published var isPlaying: Bool = false
     @Published var sliderValue: Double = 0
-
+    
     func updateCurrentTime() {
         currentTime = player.currentTime
+        isPlaying = player.isPlaying
     }
-
+    
     func updateDuration() {
         duration = player.duration
     }

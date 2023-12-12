@@ -1,180 +1,254 @@
 //
-//  ExpadendBottomSheet.swift
+//  MaxiPlayerView.swift
 //  PomoFocus
 //
-//  Created by Davide Formisano on 06/12/23.
+//  Created by Davide Formisano on 11/12/23.
 //
 
 import SwiftUI
-import AVFoundation
+import AVKit
 
-
-
-
-struct ExpadendBottomSheet: View {
+struct MaxiPlayerView: View {
     
-    @State private var animateContent: Bool = false
-    @State private var offsetY: CGFloat = 0
-    @State private var isTesting: Bool = false
-    @State private var isSearching: Bool = false
+    
+    
+    @State private var player: AVAudioPlayer?
+    
+    @State private var isPlaying = false
     @State private var totalTime: TimeInterval = 0.0
     @State private var currentTime: TimeInterval = 0.0
-    @Environment (\.presentationMode) var presentationmode
-    @StateObject var audioPlayerViewModel = AudioPlayerViewModel()
+    
+    
+    @State private var animationContent: Bool = false
+    
     var body: some View {
         GeometryReader{
             let size = $0.size
             let safeArea = $0.safeAreaInsets
-
+            
                 VStack(spacing: 15){
+                    Capsule()
+                        .fill(.gray)
+                        .frame(width: 40, height: 5)
+                        .padding()
+                    
                     GeometryReader{
                         let size = $0.size
-                        Capsule()
-                            .fill(.gray)
-                            .frame(width: 40, height: 5)
-                            .padding()
                         
                         Image("TestImage")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 300  ,height: 300)
+                            .frame(width: size.width, height: size.height)
                             .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                            .padding()
                     }
+                    .frame(height: size.width - 50)
+                    .padding(.vertical, size.height < 700 ? 10 : 30)
                     
-                    .frame(height: size.height / 2.5, alignment: .top)
                     
-                    PlayerView()
+                    PlayerView(size)
+                     
+                    
                 }
+                
+                .padding(.top, safeArea.top + (safeArea.bottom == 0 ? 10 : 0))
+                .padding(.bottom, safeArea.bottom == 0 ? 10 : safeArea.bottom)
+                .padding(.horizontal, 25)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .clipped()
+            
         }
-    
+        
+        
+        .onAppear(perform: setupAudio)
         .onReceive(Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()) { _ in
             updateProgress()
         }
+        
+        
     }
-    func updateProgress() {
+    
+    private func setupAudio(){
+        guard let url = Bundle.main.url(forResource: "homestuck", withExtension: "mp3")
+        else{
+            return
+        }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.prepareToPlay()
+            totalTime = player?.duration ?? 0.0
+        }catch {
+            print("Errir loading audio: \(error)")
+        }
+    }
+    
+    private func playAudio(){
+        player?.play()
+        isPlaying = true
+    }
+    
+    private func stopAudio() {
+        player?.pause()
+        isPlaying = false
+    }
+    
+    private func updateProgress() {
         guard let player = player else { return }
         currentTime = player.currentTime
     }
-
-    func seekAudio(to time: TimeInterval) {
+    
+    private func seekAudio(to time: TimeInterval) {
         player?.currentTime = time
     }
-
-    func timeString(time: TimeInterval) -> String {
+    
+    private func timeString(time: TimeInterval) -> String {
         let minute = Int(time) / 60
         let seconds = Int(time) % 60
         return String(format: "%02d:%02d", minute, seconds)
     }
-            
+    
     @ViewBuilder
-            func PlayerView() -> some View {
-                GeometryReader{
-                    let size = $0.size
-                    let spacing = size.height * 0.04
+    func PlayerView(_ mainSize: CGSize) -> some View {
+        GeometryReader{
+            
+            let size = $0.size
+            let spacing = size.height * 0.04
+            
+            VStack(spacing: spacing){
+                VStack(spacing: spacing){
+                    HStack(alignment: .center, spacing: 15){
+                        VStack(alignment: .leading, spacing: 4){
+                            Text("GOOD TIMES")
+                                .font(.title3)
+                            .fontWeight(.semibold)
+                            
+                            Text("Pippo")
+                                .foregroundColor(.gray)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Button{
+                            
+                        }label: {
+                            Image(systemName: "ellipsis")
+                                .foregroundColor(.white)
+                                .padding(12)
+                                .background{
+                                    Circle()
+                                        .fill(.ultraThinMaterial)
+                                        .environment(\.colorScheme, .light)
+                                }
+                                
+                        }
+                     }
                     
-                    VStack(spacing: spacing){
-                        VStack(spacing: spacing){
-                            HStack(alignment: .center, spacing: 15){
-                                VStack(alignment: .leading, spacing: 4){
-                                    
-                                    Text("GOOD TIMES")
-                                        .font(.title3)
-                                        .fontWeight(.semibold)
-                                    
-                                    Text("Pippo")
-                                        
-                                }
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                                Button {
-                                    
-                                } label: {
-                                    Image(systemName: "ellipsis")
-                                        .foregroundColor(.white)
-                                        .padding(12)
-                                        .background{
-                                            Circle()
-                                                .fill(.ultraThinMaterial)
-                                                .environment(\.colorScheme, .light)
-                                        }
-                                }
-                                .padding()
-                            }
-                            
-                            Slider(value: Binding(get: {
-                               currentTime
-                           }, set: { newValue in
-                               seekAudio(to: newValue)
-                           }), in: 0...totalTime)
-                           .accentColor(.white)
-                            
-                            HStack{
-                                Text(timeString(time: currentTime))
-                                    Spacer()
-                                Text(timeString(time: totalTime))
-                            }
-                        }
-                        
-                        }
-                        .padding()
-                        
-                        HStack(spacing: size.width * 0.18){
-                            Button{
-                                
-                            } label: {
-                                Image(systemName: "backward.fill")
-                                    .font(.title3)
-                            }
-                            
-                            Button{
-                                if audioPlayerViewModel.isPlaying {
-                                    pauseMusic()
-                                    audioPlayerViewModel.isPlaying = false
-                                } else {
-                                    playMusic()
-                                    resumeMusic()
-                                    audioPlayerViewModel.isPlaying = true
-                                }
-                                /*
-                                if isTesting {
-                                    pauseMusic()
-                                    isTesting = false
-                                } else {
-                                    playMusic()
-                                    resumeMusic()
-                                    isTesting = true
-                                }
-                                */
-                                
-                            } label: {
-                                Image(systemName: audioPlayerViewModel.isPlaying ? "pause.fill" : "play.fill")
-                                    .font(.largeTitle)
-                            }
-                            
-                            Button{
-                                
-                            } label: {
-                                Image(systemName: "forward.fill")
-                                    .font(.title3)
-                            }
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        
-                        
-                        
-                            
-                        }
+                    Slider(value: Binding(get: {
+                       currentTime
+                   }, set: { newValue in
+                       seekAudio(to: newValue)
+                   }), in: 0...totalTime)
+                   .accentColor(.white)
+                    
+                    HStack{
+                        Text(timeString(time: currentTime))
+                            Spacer()
+                        Text(timeString(time: totalTime))
                     }
                 }
+                .frame(height: size.height / 2.5, alignment: .top)
+                
+                HStack(spacing: size.width * 0.18){
+                    Button{
+                        
+                    }label: {
+                        Image(systemName: "backward.fill")
+                            .font(size.height < 300 ? .title3 : .title)
+                    }
+                    
+                    Button{
+                        
+                    }label: {
+                        Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                            .font(size.height < 300 ? .largeTitle : .system(size: 50))
+                            .onTapGesture {
+                                isPlaying ? stopAudio() : playAudio()
+                            }
+                    }
+                    
+                    Button{
+                        
+                    }label: {
+                        Image(systemName: "forward.fill")
+                            .font(size.height < 300 ? .title3 : .title)
+                    }
+                }
+                
+                .frame(maxWidth: .infinity)
+                
+                VStack(spacing: spacing){
+                    HStack(spacing: 15){
+                        Image(systemName: "speaker.fill")
+                            
+                        Capsule()
+                            .fill(.ultraThinMaterial)
+                            .environment(\.colorScheme, .light)
+                            .frame(height: 5)
+                        Image(systemName: "speaker.wave.3.fill")
+                    }
+                    HStack(alignment: .top, spacing: size.width * 0.18){
+                        Button{
+                            
+                        }label: {
+                            Image(systemName: "quote.bubble")
+                                .font(.title2)
+                            
+                        }
+                        
+                        VStack(spacing: 6){
+                            Button{
+                                
+                            }label: {
+                                Image(systemName: "airpodspro.chargingcase.wireless.fill")
+                                    .font(.title2)
+                                
+                        }
+                            Text("Airpods")
+                                .font(.caption)
+                                
+                          }
+                        
+                        Button{
+                            
+                        }label: {
+                            Image(systemName: "list.bullet")
+                                .font(.title2)
+                            
+                        }
+                        
+                    }
+                    
+                }
+                .frame(height: size.height / 2.5, alignment: .bottom)
+            }
+        }
+    }
+    
+}
 
 
-
-
-
-
+extension View{
+    var deviceCornerRadius: CGFloat {
+        
+       let key = "_displayCornerRadius"
+        
+       if let screen = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.screen{
+            if let cornerRadius = screen.value(forKey: key) as? CGFloat {
+                return cornerRadius
+            }
+            return 0
+        }
+        return 0
+    }
+}
 
 /*
 VStack(spacing: spacing){
@@ -361,8 +435,3 @@ VStack(spacing: spacing){
         }
     }
      */
-
-
-
-
-

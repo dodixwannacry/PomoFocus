@@ -13,10 +13,10 @@
 		4DE756B62B207C2C00F6E641 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756B52B207C2C00F6E641 /* AppState.swift */; };
 		4DE756B82B207D3900F6E641 /* PomoFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756B72B207D3900F6E641 /* PomoFocus.swift */; };
 		7AB9E4612B20F57F001A0986 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E4602B20F57F001A0986 /* LibraryView.swift */; };
-		7AB9E4632B20FD87001A0986 /* ExpadendBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E4622B20FD87001A0986 /* ExpadendBottomSheet.swift */; };
 		7AB9E46E2B248C82001A0986 /* MusicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB9E4692B248C5B001A0986 /* MusicKit.framework */; };
 		7AB9E47A2B24C6CE001A0986 /* homestuck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */; };
 		7AB9E47C2B24C790001A0986 /* SoundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E47B2B24C790001A0986 /* SoundMusic.swift */; };
+		7AF2AA592B2778D600C10C11 /* MaxiPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2AA582B2778D600C10C11 /* MaxiPlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,10 +27,10 @@
 		4DE756B52B207C2C00F6E641 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4DE756B72B207D3900F6E641 /* PomoFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoFocus.swift; sourceTree = "<group>"; };
 		7AB9E4602B20F57F001A0986 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
-		7AB9E4622B20FD87001A0986 /* ExpadendBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpadendBottomSheet.swift; sourceTree = "<group>"; };
 		7AB9E4692B248C5B001A0986 /* MusicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MusicKit.framework; path = System/Library/Frameworks/MusicKit.framework; sourceTree = SDKROOT; };
 		7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = homestuck.mp3; path = ../homestuck.mp3; sourceTree = "<group>"; };
 		7AB9E47B2B24C790001A0986 /* SoundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundMusic.swift; sourceTree = "<group>"; };
+		7AF2AA582B2778D600C10C11 /* MaxiPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxiPlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +48,8 @@
 		4DE7569B2B1F38E300F6E641 = {
 			isa = PBXGroup;
 			children = (
+				7AF2AA582B2778D600C10C11 /* MaxiPlayerView.swift */,
 				7AB9E47B2B24C790001A0986 /* SoundMusic.swift */,
-				7AB9E4622B20FD87001A0986 /* ExpadendBottomSheet.swift */,
 				7AB9E4602B20F57F001A0986 /* LibraryView.swift */,
 				7AB9E4472B1F3FE7001A0986 /* ViewModel */,
 				4DE756A62B1F38E300F6E641 /* PomoFocus */,
@@ -174,9 +174,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AB9E4612B20F57F001A0986 /* LibraryView.swift in Sources */,
-				7AB9E4632B20FD87001A0986 /* ExpadendBottomSheet.swift in Sources */,
 				4DE756B82B207D3900F6E641 /* PomoFocus.swift in Sources */,
 				4DE756AA2B1F38E300F6E641 /* ContentView.swift in Sources */,
+				7AF2AA592B2778D600C10C11 /* MaxiPlayerView.swift in Sources */,
 				4DE756B62B207C2C00F6E641 /* AppState.swift in Sources */,
 				7AB9E47C2B24C790001A0986 /* SoundMusic.swift in Sources */,
 			);

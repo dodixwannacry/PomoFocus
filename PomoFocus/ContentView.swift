@@ -48,10 +48,10 @@ struct ContentView: View {
                     GeometryReader { geo in
                         VStack(spacing: 10) {
                             Text(appState.mode.rawValue)
-                                .foregroundColor(.black)
+                                .foregroundColor(.white)
                                 .font(.system(size: 50))
                             Text(appState.currentTimeDisplay)
-                                .foregroundColor(.black)
+                                .foregroundColor(.white)
                                 .font(.system(size: 50))
                         }
                         .frame(width: geo.size.width, height: geo.size.height)
@@ -83,6 +83,7 @@ struct ContentView: View {
                         }) {
                             
                             Image(systemName: "play.circle.fill")
+                                .foregroundColor(.redd)
                                 .font(.system(size: 35))
                         }.padding(20)
 

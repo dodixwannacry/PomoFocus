@@ -19,8 +19,6 @@ struct MaxiPlayerView: View {
     @State private var currentTime: TimeInterval = 0.0
     
     
-    @State private var animationContent: Bool = false
-    
     var body: some View {
         GeometryReader{
             let size = $0.size
@@ -146,7 +144,7 @@ struct MaxiPlayerView: View {
                    }, set: { newValue in
                        seekAudio(to: newValue)
                    }), in: 0...totalTime)
-                   .accentColor(.white)
+                   .accentColor(.redd)
                     
                     HStack{
                         Text(timeString(time: currentTime))
@@ -235,20 +233,7 @@ struct MaxiPlayerView: View {
 }
 
 
-extension View{
-    var deviceCornerRadius: CGFloat {
-        
-       let key = "_displayCornerRadius"
-        
-       if let screen = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.screen{
-            if let cornerRadius = screen.value(forKey: key) as? CGFloat {
-                return cornerRadius
-            }
-            return 0
-        }
-        return 0
-    }
-}
+
 
 /*
 VStack(spacing: spacing){

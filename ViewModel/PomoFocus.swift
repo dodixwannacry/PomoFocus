@@ -29,6 +29,7 @@ struct PomoFocusdef: App {
                     }
                     .tag(0)
             }
+            .accentColor(.redd)
             .toolbarBackground(.visible, for: .tabBar)
             .toolbarBackground(.ultraThickMaterial, for: .tabBar)
             .toolbar(expandSheet ? .hidden : .visible, for: .tabBar)

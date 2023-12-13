@@ -39,89 +39,95 @@ struct ContentView: View {
     
     @State private var isModal:  Bool = false
     
+   
     
     var body: some View {
-       
-            ZStack {
-                VStack(spacing: 10) {
-                    
-                    GeometryReader { geo in
-                        Spacer()
-                        ZStack() {
-                            Image("Tomato")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                            VStack{
-                                Text(appState.mode.rawValue)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 50))
-                                Text(appState.currentTimeDisplay)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 50))
-                            }
-                            
-                        }.frame(width: geo.size.width, height: geo.size.height)
-                    }.frame(maxHeight: 350)
-                   
-                        Stepper("\(appState.workMinutes) minute session", value: $appState.workMinutes, in: 1...99)
-                            .disabled(timer != nil)
-                            .padding()
-                            .background(.redd)
-                            .foregroundColor(.black)
-                            .font(.title)
-                            .cornerRadius(15.0)
-
-                    Stepper("\(appState.restMinutes) minute break ", value: $appState.restMinutes, in: 1...99)
-                            .disabled(timer != nil)
-                            .padding()
-                            .background(.redd)
-                            .foregroundColor(.black)
-                            .font(.title)
-                            .cornerRadius(15.0)
-                    HStack {
+        
+        ZStack {
+            VStack(spacing: 10) {
+                
+                GeometryReader { geo in
+                    Spacer()
+                    ZStack() {
+                        Image("Tomato")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
                         VStack{
-                            
-                            Button(action: {
-                                timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
-                                    appState.next()
-                                    isModal.toggle()
-                                }
-                            }) {
-                                
-                                Image(systemName: "play.circle.fill")
-                                    .foregroundColor(.redd)
-                                    .font(.system(size: 60))
-                            }.padding(60)
+                            Text(appState.mode.rawValue)
+                                .foregroundColor(.white)
+                                .font(.system(size: 50))
+                            Text(appState.currentTimeDisplay)
+                                .foregroundColor(.white)
+                                .font(.system(size: 50))
                         }
                         
-                        /*
+                    }.frame(width: geo.size.width, height: geo.size.height)
+                }.frame(maxHeight: 350)
+                
+                Stepper("\(appState.workMinutes) minute session", value: $appState.workMinutes, in: 1...99)
+                    .disabled(timer != nil)
+                    .padding()
+                    .background(.redd)
+                    .foregroundColor(.black)
+                    .font(.title)
+                    .cornerRadius(15.0)
+                
+                Stepper("\(appState.restMinutes) minute break ", value: $appState.restMinutes, in: 1...99)
+                    .disabled(timer != nil)
+                    .padding()
+                    .background(.redd)
+                    .foregroundColor(.black)
+                    .font(.title)
+                    .cornerRadius(15.0)
+                HStack {
+                    VStack{
+                        
                         Button(action: {
-                            timer?.invalidate()
-                            timer = nil
+                            /*
+                            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
+                                appState.next()
+                            }
+                             */
+                            isModal.toggle()
+                            
                         }) {
-                            Image(systemName: "stop.circle.fill")
-                                .font(.system(size: 35))
-                        }.padding(20)
-                        */
-                        /*
-                        Button(action: {
-                            timer?.invalidate()
-                            timer = nil
-                            appState.reset()
-                        }) {
-                            Image(systemName: "gobackward")
-                                .font(.system(size: 35))
-                        }.padding(20)
-                         */
+                            
+                            Image(systemName: "play.circle.fill")
+                                .foregroundColor(.redd)
+                                .font(.system(size: 60))
+                        }.padding(60)
                     }
-                    Spacer()
+                    .fullScreenCover(isPresented: $isModal)  {
+                        timerView()
+                    }
+                    /*
+                     Button(action: {
+                     timer?.invalidate()
+                     timer = nil
+                     }) {
+                     Image(systemName: "stop.circle.fill")
+                     .font(.system(size: 35))
+                     }.padding(20)
+                     */
+                    /*
+                     Button(action: {
+                     timer?.invalidate()
+                     timer = nil
+                     appState.reset()
+                     }) {
+                     Image(systemName: "gobackward")
+                     .font(.system(size: 35))
+                     }.padding(20)
+                     */
                 }
-                .foregroundColor(.black)
-                .padding()
+                Spacer()
             }
-            .background(.bgTab)
-            .edgesIgnoringSafeArea(.all)
-       
+            .foregroundColor(.black)
+            .padding()
+        }
+        .background(.bgTab)
+        .edgesIgnoringSafeArea(.all)
+        
     }
     
     

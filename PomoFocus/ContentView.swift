@@ -42,22 +42,25 @@ struct ContentView: View {
        
             ZStack {
                 VStack(spacing: 10) {
-                    Spacer()
+                    
                     GeometryReader { geo in
-                        VStack(spacing: 10) {
-                            Text(appState.mode.rawValue)
-                                .foregroundColor(.white)
-                                .font(.system(size: 50))
-                            Text(appState.currentTimeDisplay)
-                                .foregroundColor(.white)
-                                .font(.system(size: 50))
-                        }
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .background(.BG)
-                        .border(Color.black, width: 7)
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                    }.frame(maxHeight: 150)
-                    Spacer()
+                        Spacer()
+                        ZStack() {
+                            Image("Tomato")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                            VStack{
+                                Text(appState.mode.rawValue)
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 50))
+                                Text(appState.currentTimeDisplay)
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 50))
+                            }
+                            
+                        }.frame(width: geo.size.width, height: geo.size.height)
+                    }.frame(maxHeight: 350)
+                   
                         Stepper("\(appState.workMinutes) minute session", value: $appState.workMinutes, in: 1...99)
                             .disabled(timer != nil)
                             .padding()

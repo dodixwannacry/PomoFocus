@@ -50,6 +50,7 @@ struct AppState {
         
         if currentTime == 0 {
             playSound()
+            sendNotification()
         }
         
         switch(mode) {

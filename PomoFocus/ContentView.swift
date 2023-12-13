@@ -79,16 +79,19 @@ struct ContentView: View {
                             .font(.title)
                             .cornerRadius(15.0)
                     HStack {
-                        Button(action: {
-                            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
-                                appState.next()
-                            }
-                        }) {
+                        VStack{
                             
-                            Image(systemName: "play.circle.fill")
-                                .foregroundColor(.redd)
-                                .font(.system(size: 35))
-                        }.padding(20)
+                            Button(action: {
+                                timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
+                                    appState.next()
+                                }
+                            }) {
+                                
+                                Image(systemName: "play.circle.fill")
+                                    .foregroundColor(.redd)
+                                    .font(.system(size: 60))
+                            }.padding(60)
+                        }
                         /*
                         Button(action: {
                             timer?.invalidate()

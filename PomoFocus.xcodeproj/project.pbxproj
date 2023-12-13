@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DB982CC2B29CF4600E07D3A /* timerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB982CB2B29CF4600E07D3A /* timerView.swift */; };
 		4DE756AA2B1F38E300F6E641 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756A92B1F38E300F6E641 /* ContentView.swift */; };
 		4DE756AC2B1F38E400F6E641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE756AB2B1F38E400F6E641 /* Assets.xcassets */; };
 		4DE756AF2B1F38E400F6E641 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DB982CB2B29CF4600E07D3A /* timerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerView.swift; sourceTree = "<group>"; };
 		4DE756A42B1F38E300F6E641 /* PomoFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomoFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE756A92B1F38E300F6E641 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4DE756AB2B1F38E400F6E641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				4DE756A92B1F38E300F6E641 /* ContentView.swift */,
 				4DE756B52B207C2C00F6E641 /* AppState.swift */,
+				4DB982CB2B29CF4600E07D3A /* timerView.swift */,
 				4DE756AB2B1F38E400F6E641 /* Assets.xcassets */,
 				7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */,
 				4DE756AD2B1F38E400F6E641 /* Preview Content */,
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AB9E4612B20F57F001A0986 /* LibraryView.swift in Sources */,
+				4DB982CC2B29CF4600E07D3A /* timerView.swift in Sources */,
 				4DE756B82B207D3900F6E641 /* PomoFocus.swift in Sources */,
 				4DE756AA2B1F38E300F6E641 /* ContentView.swift in Sources */,
 				7AF2AA592B2778D600C10C11 /* MaxiPlayerView.swift in Sources */,

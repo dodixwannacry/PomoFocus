@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import UserNotifications
 
 @main
 struct PomoFocusdef: App {
@@ -21,7 +22,10 @@ struct PomoFocusdef: App {
             TabView(selection: $index)
             {
                 ContentView()
-                    .tabItem { 
+                    .onAppear {
+                                        requestNotificationAuthorization()
+                                    }
+                    .tabItem {
                         Image(systemName: "timer")
                             .renderingMode(.original)
                         Text("Timer")
@@ -54,9 +58,20 @@ struct PomoFocusdef: App {
             
                         
         }
+      
         
         
     }
+    
+    private func requestNotificationAuthorization() {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+                if granted {
+                    print("L'utente ha autorizzato le notifiche")
+                } else if let error = error {
+                    print("Errore nella richiesta di autorizzazione: \(error.localizedDescription)")
+                }
+            }
+        }
     
     @ViewBuilder
     func CustomButtonSheet() -> some View{

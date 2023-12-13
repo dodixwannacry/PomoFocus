@@ -15,6 +15,11 @@ struct PomoFocusdef: App {
     @State var index = 0
     @State private var isModal:  Bool = false
     @State private var isTesting:  Bool = false
+    
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+    }
+    
     var body: some Scene {
         WindowGroup{
             
@@ -46,6 +51,7 @@ struct PomoFocusdef: App {
                     .tag(1)
             }
             .tint(.redd)
+            
             .onAppear(){
                 UITabBar.appearance().backgroundColor = .tab
                     

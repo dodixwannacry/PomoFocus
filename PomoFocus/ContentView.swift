@@ -37,7 +37,7 @@ struct ContentView: View {
     
     @State var timer: Timer? = nil
     
-    
+    @State private var isModal:  Bool = false
     
     
     var body: some View {
@@ -84,6 +84,7 @@ struct ContentView: View {
                             Button(action: {
                                 timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
                                     appState.next()
+                                    isModal.toggle()
                                 }
                             }) {
                                 
@@ -92,6 +93,7 @@ struct ContentView: View {
                                     .font(.system(size: 60))
                             }.padding(60)
                         }
+                        
                         /*
                         Button(action: {
                             timer?.invalidate()

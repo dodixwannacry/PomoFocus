@@ -1,4 +1,5 @@
 import Foundation
+import UserNotifications
 
 enum Mode: String, Equatable {
     case rest = "Rest"
@@ -68,5 +69,19 @@ struct AppState {
         workMinutes = 25
         mode = .session
     }
+    private func sendNotification() {
+           let content = UNMutableNotificationContent()
+           content.title = "Timer Completed"
+           content.body = "Your timer has reached zero."
+           
+           let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+           let request = UNNotificationRequest(identifier: "timerNotification", content: content, trigger: trigger)
+           
+           UNUserNotificationCenter.current().add(request) { (error) in
+               if let error = error {
+                   print("Error sending notification: \(error.localizedDescription)")
+               }
+           }
+       }
 }
 

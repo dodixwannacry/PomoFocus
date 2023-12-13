@@ -2,52 +2,67 @@
 //  TabBar.swift
 //  PomoFocus
 //
-//  Created by Davide Formisano on 07/12/23.
+//  Created by Davide Formisano on 12/12/23.
 //
 
 import SwiftUI
 
 struct TabBar: View {
-    
     @State private var expandSheet: Bool = false
-    @Namespace private var animation
     @State var index = 0
-    
+    @State private var isModal:  Bool = false
+    @State private var isTesting:  Bool = false
     var body: some View {
-        
-            TabView(selection: $index)
-            {
-                ContentView()
-                    .tabItem { Image(systemName: "timer");Text("Timer");
+        TabView()
+        {
+            ContentView()
+                .tabItem {
+                    Image(systemName: "timer")
                         
-                    }
-                    .tag(0)
-                LibraryView()
-                    .tabItem { Image(systemName: "home.fill");Text("Library");
+                    Text("Timer")
+
                         
-                    }
-                    .tag(0)
-            }
-            .safeAreaInset(edge: .bottom) {
-                CustomButtonSheet()
-            }
-            .overlay{
-                if expandSheet {
-                    ExpadendBottomSheet(expandSheet: $expandSheet, animation: animation)
-                        .transition(.asymmetric(insertion: .identity, removal: .offset(y: -5)))
                 }
-            }
+                
+            LibraryView()
+                .tabItem {
+                    Image(systemName: "square.stack.fill")
+                        
+                    Text("Library")
+                        
+                }
+                
+              
+        }
+        .accentColor(.redd)
+        .toolbarBackground(.tab, for: .tabBar)
+            .toolbarBackground(.visible, for: . tabBar)
+            .toolbarColorScheme(.dark, for: .tabBar)
+        /*
+        .onAppear(){
+            UITabBar.appearance().backgroundColor = .tab
+        }
+         */
         
-    }
-    
+        .safeAreaInset(edge: .bottom) {
+            CustomButtonSheet()
+             }
+   }
     @ViewBuilder
     func CustomButtonSheet() -> some View{
         ZStack{
-            Rectangle()
-                .fill(.ultraThickMaterial)
-                .overlay{
-                    MusicInfo(expandSheet: $expandSheet, animation: animation)
-                }
+            if expandSheet {
+                Rectangle()
+                    .fill(.clear)
+            }else {
+                Rectangle()
+                    .fill(.ultraThickMaterial)
+                    .overlay{
+                        MusicInfo(expandSheet: $expandSheet)
+                    }
+                    
+            }
+            
         }
         .frame(height: 70)
         .overlay(alignment: .bottom, content: {
@@ -60,58 +75,64 @@ struct TabBar: View {
     }
 }
 
-
 struct MusicInfo: View {
     @Binding var expandSheet: Bool
-    var animation: Namespace.ID
+    @State private var isTesting: Bool = false
+    @State private var isModal: Bool = false
     var body: some View {
         HStack(spacing: 0){
             ZStack{
-                if !expandSheet {
-                    GeometryReader{
-                        let size = $0.size
-                        
-                        Image("TestImage")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: size.width, height: size.height)
-                            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                    }
-                    .matchedGeometryEffect(id: "TestImage", in: animation)
-                }
+                        Button(action: {
+                            isModal.toggle()
+                        }) {
+                            HStack{
+                                Image("TestImage")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 50  ,height: 50 )
+                                
+                                
+                                Text("GOOD TIMES")
+                                    .fontWeight(.semibold)
+                                    .lineLimit(1)
+                                    .padding(.horizontal, 15)
+                                
+                                Spacer(minLength: 0)
+                                
+                                Button {
+                                    if isTesting {
+                                        pauseMusic()
+                                        isTesting = false
+                                    } else {
+                                        playMusic()
+                                        resumeMusic()
+                                        isTesting = true
+                                    }
+                                } label: {
+                                    Image(systemName: isTesting ? "pause.fill" : "play.fill")
+                                        .font(.title2)
+                                }
+                                Button {
+                                    
+                                } label: {
+                                    Image(systemName: "forward.fill")
+                                        .font(.title2)
+                                }
+                                .padding(.leading, 25)
+                                
+                            }
+                        }
+                        .sheet(isPresented: $isModal) {
+                            MaxiPlayerView()
+                        }
             }
-            .frame(width: 45, height: 45)
-            
-            Text("GOOD TIMES")
-                .fontWeight(.semibold)
-                .lineLimit(1)
-                .padding(.horizontal, 15)
-            
-            Spacer(minLength: 0)
-            
-            Button {
-                
-            } label: {
-                Image(systemName: "pause.fill")
-                    .font(.title2)
+            .foregroundColor(.primary)
+            .padding(.horizontal)
+            .padding(.bottom, 5)
+            .frame(height: 70)
+            .contentShape(Rectangle())
             }
-            Button {
-                
-            } label: {
-                Image(systemName: "forward.fill")
-                    .font(.title2)
-            }
-            .padding(.leading, 25)
-        }
-        .foregroundColor(.primary)
-        .padding(.horizontal)
-        .padding(.bottom, 5)
-        .frame(height: 70)
-        .contentShape(Rectangle())
-        .onTapGesture {
-            withAnimation(.easeInOut(duration: 0.3)) {
-                expandSheet = true
-            }
+        .background(.redd)
+        .edgesIgnoringSafeArea(.all)
         }
     }
-}

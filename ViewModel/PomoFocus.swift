@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct PomoFocusdef: App {
     @State private var expandSheet: Bool = false
     @State var index = 0
     @State private var isModal:  Bool = false
+    @State private var isTesting:  Bool = false
     var body: some Scene {
         WindowGroup{
             
@@ -19,21 +21,33 @@ struct PomoFocusdef: App {
             TabView(selection: $index)
             {
                 ContentView()
-                    .tabItem { Image(systemName: "timer");Text("Timer");
+                    .tabItem { 
+                        Image(systemName: "timer")
+                            .renderingMode(.original)
+                        Text("Timer")
+                            
+                            
                     }
+                    
                     .tag(0)
                 LibraryView()
-                    .tabItem { Image(systemName: "square.stack.fill");Text("Library");
+                    .tabItem { 
+                        Image(systemName: "square.stack.fill")
+                            .renderingMode(.original)
+                        Text("Library")
+                            
+                            
                     }
-                    .tag(0)
+                    
+                    .tag(1)
             }
-            .accentColor(.redd)
-            .toolbarBackground(.visible, for: .tabBar)
+            .tint(.redd)
             .onAppear(){
                 UITabBar.appearance().backgroundColor = .tab
+                    
             }
-            .toolbarBackground(.ultraThickMaterial, for: .tabBar)
-            .toolbar(expandSheet ? .hidden : .visible, for: .tabBar)
+             
+            
             .safeAreaInset(edge: .bottom) {
                 CustomButtonSheet()
                  }

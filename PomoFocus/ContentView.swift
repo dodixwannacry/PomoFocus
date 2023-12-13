@@ -58,7 +58,7 @@ struct ContentView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                     }.frame(maxHeight: 150)
                     Spacer()
-                        Stepper("\(appState.workMinutes)  minute session", value: $appState.workMinutes, in: 1...99)
+                        Stepper("\(appState.workMinutes) minute session", value: $appState.workMinutes, in: 1...99)
                             .disabled(timer != nil)
                             .padding()
                             .background(.redd)
@@ -111,7 +111,7 @@ struct ContentView: View {
             }
             .background(.bgTab)
             .edgesIgnoringSafeArea(.all)
-        
+       
     }
     
     

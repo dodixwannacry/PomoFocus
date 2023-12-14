@@ -4,7 +4,6 @@
 //
 //  Created by Rodolfo Falanga on 06/12/23.
 //
-
 import SwiftUI
 import AVFoundation
 
@@ -101,7 +100,7 @@ struct ContentView: View {
                         }.padding(60)
                     }
                     .fullScreenCover(isPresented: $isModal)  {
-                        timerView()
+                        timerView(appState: appState)
                     }
                     /*
                      Button(action: {
@@ -142,4 +141,3 @@ struct ContentView_Previews: PreviewProvider {
             
     }
 }
-

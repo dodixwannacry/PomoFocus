@@ -31,16 +31,13 @@ extension Button {
 
 struct timerView: View {
     
-    @State var appState = AppState {
-        AudioServicesPlaySystemSound(1032)
-    }
+    @State var appState: AppState
     
     @State var timer: Timer? = nil
     
     @State private var isModal:  Bool = false
     @Environment (\.presentationMode) var presentationmode
     @State private var isStart: Bool  = false
-    
     
   
     
@@ -120,10 +117,9 @@ struct timerView: View {
 
 struct timerView_Previews: PreviewProvider {
     static var previews: some View {
-        timerView()
+        timerView(appState: AppState {
+            AudioServicesPlaySystemSound(1032)
+        })
             
     }
 }
-
-
-

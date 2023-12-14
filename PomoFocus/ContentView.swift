@@ -39,7 +39,7 @@ struct ContentView: View {
     
     @State private var isModal:  Bool = false
     
-   
+    
     
     var body: some View {
         
@@ -72,6 +72,7 @@ struct ContentView: View {
                     .font(.title)
                     .cornerRadius(15.0)
                 
+                
                 Stepper("\(appState.restMinutes) minute break ", value: $appState.restMinutes, in: 1...99)
                     .disabled(timer != nil)
                     .padding()
@@ -79,6 +80,8 @@ struct ContentView: View {
                     .foregroundColor(.black)
                     .font(.title)
                     .cornerRadius(15.0)
+                
+                
                 HStack {
                     VStack{
                         

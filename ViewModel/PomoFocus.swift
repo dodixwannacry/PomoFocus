@@ -112,19 +112,12 @@ struct PomoFocusdef: App {
 
 
 struct MusicInfo: View {
-    @State private var currentSongIndex = 0
     @Binding var expandSheet: Bool
     @State private var isTesting: Bool = false
     @State private var isModal: Bool = false
-    @State private var isPlaying = false
     @State private var totalTime: TimeInterval = 0.0
     @EnvironmentObject private var playerManager: MusicPlayerManager
     
-    let songs: [Song] = [
-        Song(title: "Good Times", artist: "Pippo", imageName: "TestImage", audioFileName: "homestuck"),
-        Song(title: "Life is Good", artist: "Paperino", imageName: "TestImage2", audioFileName: "bensound-lostinthehaze"),
-        Song(title: "Relaxing", artist: "Topolino", imageName: "TestImage3", audioFileName: "bensound-boundlessspace")
-    ]
     var body: some View {
         HStack(spacing: 0){
             ZStack{
@@ -132,13 +125,13 @@ struct MusicInfo: View {
                     isModal.toggle()
                 }) {
                     HStack{
-                        Image(playerManager.songs[currentSongIndex].imageName)
+                        Image(playerManager.songs[playerManager.currentSongIndex].imageName)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50  ,height: 50 )
                         
                         
-                        Text(playerManager.songs[currentSongIndex].title)
+                        Text(playerManager.songs[playerManager.currentSongIndex].title)
                             .fontWeight(.semibold)
                             .lineLimit(1)
                             .padding(.horizontal, 15)
@@ -178,46 +171,16 @@ struct MusicInfo: View {
         .background(.redd)
         .edgesIgnoringSafeArea(.all)
     }
-    
-//    private func setupAudio(){
-//        guard let url = Bundle.main.url(forResource: songs[currentSongIndex].audioFileName, withExtension: "mp3")
-//        else{
-//            return
-//        }
-//        do {
-//            player = try AVAudioPlayer(contentsOf: url)
-//            player?.prepareToPlay()
-//            totalTime = player?.duration ?? 0.0
-//        }catch {
-//            print("Errir loading audio: \(error)")
-//        }
-//    }
-//    
-//    private func playAudio(){
-//        player?.play()
-//        isPlaying = true
-//    }
-//    
-//    private func stopAudio() {
-//        player?.pause()
-//        isPlaying = false
-//    }
-//    private func playNextSong() {
-//        stopAudio()
-//        currentSongIndex = (currentSongIndex + 1) % songs.count
-//        setupAudio()
-//        playAudio()
-//    }
 }
 
 class MusicPlayerManager: ObservableObject {
     @Published var currentSongIndex = 0
     @Published var isPlaying = false
-    @Published private var totalTime: TimeInterval = 0.0
+    @Published var totalTime: TimeInterval = 0.0
     @Published var isTesting: Bool = false
-    @Published private var currentTime: TimeInterval = 0.0
+    @Published var currentTime: TimeInterval = 0.0
     
-    let songs: [Song] = [
+    @Published var songs: [Song] = [
         Song(title: "Good Times", artist: "Pippo", imageName: "TestImage", audioFileName: "homestuck"),
         Song(title: "Life is Good", artist: "Paperino", imageName: "TestImage2", audioFileName: "bensound-lostinthehaze"),
         Song(title: "Relaxing", artist: "Topolino", imageName: "TestImage3", audioFileName: "bensound-boundlessspace")
@@ -234,6 +197,10 @@ class MusicPlayerManager: ObservableObject {
             resumeMusic()
             isTesting = true
         }
+    }
+    
+    init() {
+        setupAudio()
     }
     
     func setupAudio(){

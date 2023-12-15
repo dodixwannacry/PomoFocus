@@ -15,7 +15,6 @@
 		4DE756B82B207D3900F6E641 /* PomoFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756B72B207D3900F6E641 /* PomoFocus.swift */; };
 		7A5082A72B2B0F6100A30748 /* bensound-lostinthehaze.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A5082A62B2B0F6100A30748 /* bensound-lostinthehaze.mp3 */; };
 		7A5082AA2B2B100800A30748 /* bensound-boundlessspace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A5082A92B2B100700A30748 /* bensound-boundlessspace.mp3 */; };
-		7AB9E4612B20F57F001A0986 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E4602B20F57F001A0986 /* LibraryView.swift */; };
 		7AB9E46E2B248C82001A0986 /* MusicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB9E4692B248C5B001A0986 /* MusicKit.framework */; };
 		7AB9E47A2B24C6CE001A0986 /* homestuck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */; };
 		7AB9E47C2B24C790001A0986 /* SoundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E47B2B24C790001A0986 /* SoundMusic.swift */; };
@@ -32,7 +31,6 @@
 		4DE756B72B207D3900F6E641 /* PomoFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoFocus.swift; sourceTree = "<group>"; };
 		7A5082A62B2B0F6100A30748 /* bensound-lostinthehaze.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-lostinthehaze.mp3"; sourceTree = "<group>"; };
 		7A5082A92B2B100700A30748 /* bensound-boundlessspace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-boundlessspace.mp3"; sourceTree = "<group>"; };
-		7AB9E4602B20F57F001A0986 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7AB9E4692B248C5B001A0986 /* MusicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MusicKit.framework; path = System/Library/Frameworks/MusicKit.framework; sourceTree = SDKROOT; };
 		7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = homestuck.mp3; sourceTree = "<group>"; };
 		7AB9E47B2B24C790001A0986 /* SoundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundMusic.swift; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 				7AF2AA582B2778D600C10C11 /* MaxiPlayerView.swift */,
 				7A5082A82B2B0F7A00A30748 /* Musics */,
 				7AB9E47B2B24C790001A0986 /* SoundMusic.swift */,
-				7AB9E4602B20F57F001A0986 /* LibraryView.swift */,
 				7AB9E4472B1F3FE7001A0986 /* ViewModel */,
 				4DE756A62B1F38E300F6E641 /* PomoFocus */,
 				4DE756A52B1F38E300F6E641 /* Products */,
@@ -194,7 +191,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AB9E4612B20F57F001A0986 /* LibraryView.swift in Sources */,
 				4DB982CC2B29CF4600E07D3A /* timerView.swift in Sources */,
 				4DE756B82B207D3900F6E641 /* PomoFocus.swift in Sources */,
 				4DE756AA2B1F38E300F6E641 /* ContentView.swift in Sources */,

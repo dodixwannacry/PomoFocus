@@ -25,45 +25,10 @@ struct PomoFocusdef: App {
     var body: some Scene {
         WindowGroup{
             
-            
-            TabView(selection: $index)
-            {
-                ContentView()
-                    .onAppear {
-                        requestNotificationAuthorization()
-                    }
-                    .tabItem {
-                        Image(systemName: "timer")
-                            .renderingMode(.original)
-                        Text("Timer")
-                        
-                        
-                    }
-                
-                    .tag(0)
-                LibraryView()
-                    .tabItem {
-                        Image(systemName: "square.stack.fill")
-                            .renderingMode(.original)
-                        Text("Library")
-                        
-                        
-                    }
-                
-                    .tag(1)
-            }
-            .tint(.redd)
-            
-            .onAppear(){
-                UITabBar.appearance().backgroundColor = .tab
-                
-            }
-            
-            
-            .safeAreaInset(edge: .bottom) {
-                CustomButtonSheet()
-            }
-            .environmentObject(playerManager)
+            ContentView()
+                    CustomButtonSheet()
+                    .environmentObject(playerManager)
+                    
             
         }
         
@@ -98,15 +63,8 @@ struct PomoFocusdef: App {
             
         }
         .frame(height: 70)
-        .overlay(alignment: .bottom, content: {
-            Rectangle()
-                .fill(.gray.opacity(0.3))
-                .frame(height: 1)
-            
-        })
-        .offset(y: -49)
+        
     }
-    
 }
 
 

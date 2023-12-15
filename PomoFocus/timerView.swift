@@ -115,6 +115,7 @@ struct timerView: View {
     }
 }
 
+
 struct timerView_Previews: PreviewProvider {
     static var previews: some View {
         timerView(appState: AppState {

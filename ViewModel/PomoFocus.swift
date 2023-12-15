@@ -20,6 +20,7 @@ struct PomoFocusdef: App {
     
     init() {
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
+        requestNotificationAuthorization()
     }
     
     var body: some Scene {
@@ -28,15 +29,12 @@ struct PomoFocusdef: App {
             ContentView()
                     CustomButtonSheet()
                     .environmentObject(playerManager)
+            
                     
                     
             
         }
-        
-        
-        
     }
-    
     private func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if granted {
@@ -46,6 +44,8 @@ struct PomoFocusdef: App {
             }
         }
     }
+    
+    
     
     @ViewBuilder
     func CustomButtonSheet() -> some View{

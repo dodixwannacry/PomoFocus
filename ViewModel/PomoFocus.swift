@@ -29,6 +29,7 @@ struct PomoFocusdef: App {
                     CustomButtonSheet()
                     .environmentObject(playerManager)
                     
+                    
             
         }
         
@@ -52,6 +53,7 @@ struct PomoFocusdef: App {
             if expandSheet {
                 Rectangle()
                     .fill(.clear)
+                    .background(.bgTab)
             }else {
                 Rectangle()
                     .fill(.ultraThickMaterial)
@@ -62,7 +64,7 @@ struct PomoFocusdef: App {
             }
             
         }
-        .frame(height: 70)
+        .frame(height: 50)
         
     }
 }

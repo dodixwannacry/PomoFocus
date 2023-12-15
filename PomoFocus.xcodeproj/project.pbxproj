@@ -13,6 +13,8 @@
 		4DE756AF2B1F38E400F6E641 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */; };
 		4DE756B62B207C2C00F6E641 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756B52B207C2C00F6E641 /* AppState.swift */; };
 		4DE756B82B207D3900F6E641 /* PomoFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE756B72B207D3900F6E641 /* PomoFocus.swift */; };
+		7A5082A72B2B0F6100A30748 /* bensound-lostinthehaze.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A5082A62B2B0F6100A30748 /* bensound-lostinthehaze.mp3 */; };
+		7A5082AA2B2B100800A30748 /* bensound-boundlessspace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A5082A92B2B100700A30748 /* bensound-boundlessspace.mp3 */; };
 		7AB9E4612B20F57F001A0986 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9E4602B20F57F001A0986 /* LibraryView.swift */; };
 		7AB9E46E2B248C82001A0986 /* MusicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB9E4692B248C5B001A0986 /* MusicKit.framework */; };
 		7AB9E47A2B24C6CE001A0986 /* homestuck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */; };
@@ -28,9 +30,11 @@
 		4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4DE756B52B207C2C00F6E641 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4DE756B72B207D3900F6E641 /* PomoFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoFocus.swift; sourceTree = "<group>"; };
+		7A5082A62B2B0F6100A30748 /* bensound-lostinthehaze.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-lostinthehaze.mp3"; sourceTree = "<group>"; };
+		7A5082A92B2B100700A30748 /* bensound-boundlessspace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-boundlessspace.mp3"; sourceTree = "<group>"; };
 		7AB9E4602B20F57F001A0986 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7AB9E4692B248C5B001A0986 /* MusicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MusicKit.framework; path = System/Library/Frameworks/MusicKit.framework; sourceTree = SDKROOT; };
-		7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = homestuck.mp3; path = ../homestuck.mp3; sourceTree = "<group>"; };
+		7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = homestuck.mp3; sourceTree = "<group>"; };
 		7AB9E47B2B24C790001A0986 /* SoundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundMusic.swift; sourceTree = "<group>"; };
 		7AF2AA582B2778D600C10C11 /* MaxiPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxiPlayerView.swift; sourceTree = "<group>"; };
 		7AF2AA682B29D98C00C10C11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF2AA582B2778D600C10C11 /* MaxiPlayerView.swift */,
+				7A5082A82B2B0F7A00A30748 /* Musics */,
 				7AB9E47B2B24C790001A0986 /* SoundMusic.swift */,
 				7AB9E4602B20F57F001A0986 /* LibraryView.swift */,
 				7AB9E4472B1F3FE7001A0986 /* ViewModel */,
@@ -77,7 +82,6 @@
 				4DE756B52B207C2C00F6E641 /* AppState.swift */,
 				4DB982CB2B29CF4600E07D3A /* timerView.swift */,
 				4DE756AB2B1F38E400F6E641 /* Assets.xcassets */,
-				7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */,
 				4DE756AD2B1F38E400F6E641 /* Preview Content */,
 			);
 			path = PomoFocus;
@@ -89,6 +93,16 @@
 				4DE756AE2B1F38E400F6E641 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7A5082A82B2B0F7A00A30748 /* Musics */ = {
+			isa = PBXGroup;
+			children = (
+				7AB9E4792B24C6CE001A0986 /* homestuck.mp3 */,
+				7A5082A92B2B100700A30748 /* bensound-boundlessspace.mp3 */,
+				7A5082A62B2B0F6100A30748 /* bensound-lostinthehaze.mp3 */,
+			);
+			path = Musics;
 			sourceTree = "<group>";
 		};
 		7AB9E4472B1F3FE7001A0986 /* ViewModel */ = {
@@ -166,7 +180,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE756AF2B1F38E400F6E641 /* Preview Assets.xcassets in Resources */,
+				7A5082A72B2B0F6100A30748 /* bensound-lostinthehaze.mp3 in Resources */,
 				4DE756AC2B1F38E400F6E641 /* Assets.xcassets in Resources */,
+				7A5082AA2B2B100800A30748 /* bensound-boundlessspace.mp3 in Resources */,
 				7AB9E47A2B24C6CE001A0986 /* homestuck.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,7 +334,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomoFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = 9L5T2ZCJNR;
+				DEVELOPMENT_TEAM = 7DCJG5672R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomoFocus/Info.plist;
@@ -332,7 +348,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = RodolfoFalanga.PomoFocus.1;
+				PRODUCT_BUNDLE_IDENTIFIER = RodolfoFalanga.PomoFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -348,7 +364,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomoFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = 9L5T2ZCJNR;
+				DEVELOPMENT_TEAM = 7DCJG5672R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomoFocus/Info.plist;
@@ -362,7 +378,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = RodolfoFalanga.PomoFocus.1;
+				PRODUCT_BUNDLE_IDENTIFIER = RodolfoFalanga.PomoFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

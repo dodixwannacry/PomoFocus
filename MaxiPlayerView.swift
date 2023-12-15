@@ -8,16 +8,27 @@
 import SwiftUI
 import AVKit
 
+struct Song {
+    let title: String
+    let artist: String
+    let imageName: String
+    let audioFileName: String
+}
+
 struct MaxiPlayerView: View {
     
-    
-    
     @State private var player: AVAudioPlayer?
-    
     @State private var isPlaying = false
     @State private var totalTime: TimeInterval = 0.0
     @State private var currentTime: TimeInterval = 0.0
+    @State private var currentSongIndex = 0
+    @EnvironmentObject private var playerManager: MusicPlayerManager
     
+    let songs: [Song] = [
+            Song(title: "Good Times", artist: "Pippo", imageName: "TestImage", audioFileName: "homestuck"),
+            Song(title: "Life is Good", artist: "Paperino", imageName: "TestImage2", audioFileName: "bensound-lostinthehaze"),
+            Song(title: "Relaxing", artist: "Topolino", imageName: "TestImage3", audioFileName: "bensound-boundlessspace")
+        ]
     
     var body: some View {
         GeometryReader{
@@ -33,7 +44,7 @@ struct MaxiPlayerView: View {
                     GeometryReader{
                         let size = $0.size
                         
-                        Image("TestImage")
+                        Image(playerManager.songs[currentSongIndex].imageName)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: size.width, height: size.height)
@@ -44,6 +55,7 @@ struct MaxiPlayerView: View {
                     
                     
                     PlayerView(size)
+                        
                      
                     
                 }
@@ -57,53 +69,67 @@ struct MaxiPlayerView: View {
         }
         
         
-        .onAppear(perform: setupAudio)
+        .onAppear(perform: playerManager.setupAudio)
         .onReceive(Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()) { _ in
-            updateProgress()
+            playerManager.updateProgress()
         }
         
         .preferredColorScheme(.dark)
         
     }
-    
-    private func setupAudio(){
-        guard let url = Bundle.main.url(forResource: "homestuck", withExtension: "mp3")
-        else{
-            return
-        }
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.prepareToPlay()
-            totalTime = player?.duration ?? 0.0
-        }catch {
-            print("Errir loading audio: \(error)")
-        }
-    }
-    
-    private func playAudio(){
-        player?.play()
-        isPlaying = true
-    }
-    
-    private func stopAudio() {
-        player?.pause()
-        isPlaying = false
-    }
-    
-    private func updateProgress() {
-        guard let player = player else { return }
-        currentTime = player.currentTime
-    }
-    
-    private func seekAudio(to time: TimeInterval) {
-        player?.currentTime = time
-    }
-    
-    private func timeString(time: TimeInterval) -> String {
-        let minute = Int(time) / 60
-        let seconds = Int(time) % 60
-        return String(format: "%02d:%02d", minute, seconds)
-    }
+//    
+//    private func setupAudio(){
+//        guard let url = Bundle.main.url(forResource: songs[currentSongIndex].audioFileName, withExtension: "mp3")
+//        else{
+//            return
+//        }
+//        do {
+//            player = try AVAudioPlayer(contentsOf: url)
+//            player?.prepareToPlay()
+//            totalTime = player?.duration ?? 0.0
+//        }catch {
+//            print("Errir loading audio: \(error)")
+//        }
+//    }
+//    
+//    private func playAudio(){
+//        player?.play()
+//        isPlaying = true
+//    }
+//    
+//    private func stopAudio() {
+//        player?.pause()
+//        isPlaying = false
+//    }
+//    
+//    private func updateProgress() {
+//        guard let player = player else { return }
+//        currentTime = player.currentTime
+//    }
+//    
+//    private func seekAudio(to time: TimeInterval) {
+//        player?.currentTime = time
+//    }
+//    
+//    private func timeString(time: TimeInterval) -> String {
+//        let minute = Int(time) / 60
+//        let seconds = Int(time) % 60
+//        return String(format: "%02d:%02d", minute, seconds)
+//    }
+//    
+//    private func playPreviousSong() {
+//            stopAudio()
+//            currentSongIndex = (currentSongIndex - 1 + songs.count) % songs.count
+//            setupAudio()
+//            playAudio()
+//        }
+//        
+//        private func playNextSong() {
+//            stopAudio()
+//            currentSongIndex = (currentSongIndex + 1) % songs.count
+//            setupAudio()
+//            playAudio()
+//        }
     
     @ViewBuilder
     func PlayerView(_ mainSize: CGSize) -> some View {
@@ -116,11 +142,11 @@ struct MaxiPlayerView: View {
                 VStack(spacing: spacing){
                     HStack(alignment: .center, spacing: 15){
                         VStack(alignment: .leading, spacing: 4){
-                            Text("GOOD TIMES")
+                            Text(playerManager.songs[currentSongIndex].title)
                                 .font(.title3)
                             .fontWeight(.semibold)
                             
-                            Text("Pippo")
+                            Text(playerManager.songs[currentSongIndex].artist)
                                 .foregroundColor(.gray)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -143,22 +169,23 @@ struct MaxiPlayerView: View {
                     Slider(value: Binding(get: {
                        currentTime
                    }, set: { newValue in
-                       seekAudio(to: newValue)
+                       playerManager.seekAudio(to: newValue)
                    }), in: 0...totalTime)
                    .accentColor(.redd)
                     
                     HStack{
-                        Text(timeString(time: currentTime))
+                        Text(playerManager.timeString(time: currentTime))
                             Spacer()
-                        Text(timeString(time: totalTime))
+                        Text(playerManager.timeString(time: totalTime))
                     }
                 }
                 .frame(height: size.height / 2.5, alignment: .top)
                 
                 HStack(spacing: size.width * 0.18){
                     Button{
-                        
+                        playerManager.playPreviousSong()
                     }label: {
+                        
                         Image(systemName: "backward.fill")
                             .font(size.height < 300 ? .title3 : .title)
                     }
@@ -166,15 +193,15 @@ struct MaxiPlayerView: View {
                     Button{
                         
                     }label: {
-                        Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                        Image(systemName: playerManager.isPlaying ? "pause.fill" : "play.fill")
                             .font(size.height < 300 ? .largeTitle : .system(size: 50))
                             .onTapGesture {
-                                isPlaying ? stopAudio() : playAudio()
+                                playerManager.isPlaying ? playerManager.stopAudio() : playerManager.playAudio()
                             }
                     }
                     
                     Button{
-                        
+                        playerManager.playNextSong()
                     }label: {
                         Image(systemName: "forward.fill")
                             .font(size.height < 300 ? .title3 : .title)

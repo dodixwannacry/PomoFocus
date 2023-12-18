@@ -108,10 +108,10 @@ struct timerView: View {
                 }
             }
         }
-        .onDisappear {
-                    timer?.invalidate()
-                    timer = nil
-                }
+//        .onDisappear {
+//                    timer?.invalidate()
+//                    timer = nil
+//                }
     }
 }
 

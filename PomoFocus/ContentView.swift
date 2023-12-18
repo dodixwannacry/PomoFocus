@@ -102,25 +102,7 @@ struct ContentView: View {
                     .fullScreenCover(isPresented: $isModal)  {
                         timerView(appState: appState)
                     }
-                    /*
-                     Button(action: {
-                     timer?.invalidate()
-                     timer = nil
-                     }) {
-                     Image(systemName: "stop.circle.fill")
-                     .font(.system(size: 35))
-                     }.padding(20)
-                     */
-                    /*
-                     Button(action: {
-                     timer?.invalidate()
-                     timer = nil
-                     appState.reset()
-                     }) {
-                     Image(systemName: "gobackward")
-                     .font(.system(size: 35))
-                     }.padding(20)
-                     */
+                    
                 }
                 Spacer()
             }

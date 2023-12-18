@@ -89,6 +89,7 @@ struct MusicInfo: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50  ,height: 50 )
+                            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                         
                         
                         Text(playerManager.songs[playerManager.currentSongIndex].title)
@@ -103,6 +104,7 @@ struct MusicInfo: View {
                         }label: {
                             Image(systemName: playerManager.isPlaying ? "pause.fill" : "play.fill")
                                 .font(.title2)
+                                .accessibilityLabel("Play song")
                                 .onTapGesture {
                                     playerManager.isPlaying ? playerManager.stopAudio() : playerManager.playAudio()
                                 }
@@ -112,6 +114,7 @@ struct MusicInfo: View {
                         } label: {
                             Image(systemName: "forward.fill")
                                 .font(.title2)
+                                .accessibilityLabel("Next song")
                         }
                         .padding(.leading, 25)
                         
@@ -141,9 +144,11 @@ class MusicPlayerManager: ObservableObject {
     @Published var currentTime: TimeInterval = 0.0
     
     @Published var songs: [Song] = [
-        Song(title: "Good Times", artist: "Pippo", imageName: "TestImage", audioFileName: "homestuck"),
-        Song(title: "Life is Good", artist: "Paperino", imageName: "TestImage2", audioFileName: "bensound-lostinthehaze"),
-        Song(title: "Relaxing", artist: "Topolino", imageName: "TestImage3", audioFileName: "bensound-boundlessspace")
+        Song(title: "Homestcuk", artist: "Waverly", imageName: "TestImage", audioFileName: "homestuck"),
+        Song(title: "Boundless Space", artist: "DPMusic", imageName: "TestImage2", audioFileName: "bensound-lostinthehaze"),
+        Song(title: "Lost In The Haze", artist: "Veace D", imageName: "TestImage3", audioFileName: "bensound-boundlessspace"),
+        Song(title: "The Calling", artist: "Risian", imageName: "TestImage4", audioFileName: "bensound-thecalling"),
+        Song(title: "Immense Void", artist: "DPMusic", imageName: "TestImage5", audioFileName: "bensound-immensevoid")
     ]
     
     
@@ -164,6 +169,13 @@ class MusicPlayerManager: ObservableObject {
     }
     
     func setupAudio(){
+        do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowAirPlay])
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print("Errore durante la configurazione dell'audio session: \(error.localizedDescription)")
+            }
+        
           guard let url = Bundle.main.url(forResource: songs[currentSongIndex].audioFileName, withExtension: "mp3")
            else{
                return

@@ -22,6 +22,7 @@ struct MaxiPlayerView: View {
     @State private var totalTime: TimeInterval = 0.0
     @State private var currentTime: TimeInterval = 0.0
     @State private var currentSongIndex = 0
+    @State private var isTesting: Bool = false
     @EnvironmentObject private var playerManager: MusicPlayerManager
     
     let songs: [Song] = [
